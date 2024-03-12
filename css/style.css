@@ -1,29 +1,31 @@
 :root {
 	--default-spacing: 1rem;
-   --default-border: 0.2rem;
+	--double-spacing: 2rem;
+	--default-border: 0.2rem;
 
 	--primary-background-color: #f2d0e8;
 	--primary-foreground-color: #000;
 
-	--secondary-backgrond-color: #000; 
+	--secondary-backgrond-color: #000;
 	--secondary-foreground-color: #ffffff;
 
 	--article-background-color: #ffff00;
 	--article-foreground-color: #000;
 
-   --article-background-color: #ebb1d9;
-   --article-foreground-color: #000
+	--article-background-color: #ebb1d9;
+	--article-foreground-color: #000
 }
 
 * {
 	margin: auto;
-   justify-content: center;
+	justify-content: center;
 	padding: 0;
 	box-sizing: border-box;
 }
 
 body {
 	min-height: 100vh;
+	max-width: 150vh;
 
 	display: grid;
 	grid-template-columns: auto;
@@ -51,42 +53,100 @@ main {
 	grid-area: main;
 
 	display: grid;
-   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 	grid-template-rows: auto auto auto;
 	grid-template-areas:
 		"pictures"
 		"info";
 }
 
-main > article {
-   display: flex;
-   flex-wrap: wrap;
-	flex-direction: column;
+#store-main {
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+
+#product-page {
+	grid-template-columns: repeat(auto-fill, minmax(auto-fill, 1fr));
+}
+
+footer {
+	grid-area: footer;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+	grid-template-rows: auto auto auto;
+	grid-template-areas:
+		"copyright"
+		"footer-links";
+}
+
+#copyright {
+	grid-area: copyright;
+	list-style: none;
+}
+
+#footer-links {
+	grid-area: footer-links;
+}
+
+#copyright, #footer-links{
+	padding-left: var(--double-spacing);
+	padding-right: var(--double-spacing);
+}
+
+footer>section,
+main>article {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
 	gap: var(--default-spacing);
 }
 
-main > article > picture {
+footer>section {
+	font-size: 110%;
+	padding-right: 4rem;
+	padding-left: 4rem;	
+}
+
+main>article>picture {
 	grid-area: pictures;
-
 	padding: var(--default-spacing);
+	
 }
 
-main > article > section {
-   grid-area: info;
+main>article>section {
+	grid-area: info;
 }
 
-section {
-   border: var(--default-border) solid #ccc;
-   border-radius: 1.2rem; 
-   margin: var(--default-spacing);
+article {
+	border: var(--default-border) solid #ccc;
+	border-radius: 1.2rem;
+	margin: var(--default-spacing);
 	background-color: var(--article-background-color);
 	color: var(--article-foreground-color);
 	padding: var(--default-spacing);
 }
 
 h2 {
-   text-align: center;
+	text-align: left;
 }
 
 h3 {
+	padding-top: var(--default-spacing);
+	padding-bottom: var(--default-spacing);
+}
+
+#store-main img {
+	width: 100%;
+	height: auto;
+	padding: var(--default-spacing);
+	border-radius: 50%;
+}
+
+#product-page img {
+	height: auto;
+	padding: var(--default-spacing);
+	justify-content: center;
+}
+
+.image-container {
+  resize: both;
+  overflow: auto;
 }
